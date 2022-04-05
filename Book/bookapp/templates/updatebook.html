@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=file], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=date], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #7b9cbd;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #7b9cbd;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+div {
+ outline: auto;
+  outline-style: round;
+margin : 0 auto;
+  width: 25%;
+  height : 70%;
+<!--  position: fixed;-->
+  top: 50%;
+  left: 50%;
+<!--  transform: translate(-50%, -50%);-->
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 30px;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+</style>
+</head>
+<body style="background-color : #d4d2cb;">
+<center>
+    <div>
+        <center>
+<h1>Add Book</h1>
+    <form action="/update/{{book.id}}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+<label for="book_name">Book Name</label><br>
+<input type="text" name="book_name" id="book_name" value="{{book.book_name}}"><br>
+        <label for="published_date">Published Date</label><br>
+<input type="date" name="published_date" id="published_date"><br>
+<input type="hidden" id="published_date1" value="{{book.published_date}}">
+        <label for="author">Author</label><br>
+<input type="text" name="author" id="author" placeholder="Author"  value="{{book.author}}"><br>
+               <label for="publisher">Publisher</label><br>
+<input type="text" name="publisher" id="publisher" value="{{book.publisher}}"><br>
+
+                <label for="category">Category</label><br>
+
+<select name="category" id="category"  >
+  <option value="">please select</option>
+  <option value="Action and adventure" {% if book.category == "Action and adventure" %}selected{% endif %}>Action and adventure</option>
+  <option value="Art/architecture" {% if book.category == "Art/architecture" %}selected{% endif %}>Art/architecture</option>
+  <option value="Biography" {% if book.category == "Biography" %}selected{% endif %}>Biography</option>
+  <option value="Business/economics" {% if book.category == "Business/economics" %}selected{% endif %}>Business/economics</option>
+  <option value="Crafts/hobbies" {% if book.category == "Crafts/hobbies" %}selected{% endif %}>Crafts/hobbies</option>
+  <option value="Cookbook" {% if book.category == "Cookbook" %}selected{% endif %}>Cookbook</option>
+  <option value="Dictionary" {% if book.category == "Dictionary" %}selected{% endif %}>Dictionary</option>
+  <option value="Encyclopedia" {% if book.category == "Encyclopedia" %}selected{% endif %}>Encyclopedia</option>
+  <option value="Guide" {% if book.category == "Guide" %}selected{% endif %}>Guide</option>
+  <option value="Math" {% if book.category == "Math" %}selected{% endif %}>Math</option>
+  <option value="Poetry" {% if book.category == "Poetry" %}selected{% endif %}>Poetry</option>
+  <option value="Short story" {% if book.category == "Short story" %}selected{% endif %}>Short story</option>
+  <option value="Picture book" {% if book.category == "Picture book" %}selected{% endif %}>Picture book</option>
+
+</select><br>
+<label for="book_image">Upload the image of book</label><br>
+<input type="file" name="book_image" id="book_image"><br>
+
+
+<input type="submit"><br>
+    </form>
+            </center>
+        </div>
+    </center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+<script>
+    var date = document.getElementById('published_date');
+    var date2 = document.getElementById('published_date1').value;
+    date.value = moment(date2).format('YYYY-MM-DD');
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+            <style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body bgcolor="#e6eaf0">
+<center>
+        <h2 style="font-family: Helvetica, sans-serif;"><a href="/">Logout</a></h2>
+
+<table id="customers">
+    <h1>List of books</h1>
+                    <thead>
+                      <tr>
+                        <th> ID</th>
+                        <th>Book Name</th>
+                          <th>Published Date</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Category</th>
+                        <th>Image</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for i in book %}
+                      <tr>
+                          <td>{{i.id}}</td>
+                          <td style=" width: 10%; height : 10%;">{{i.book_name}}</td>
+
+                          <td style=" width: 10%; height : 10%;" >{{i.published_date}}</td>
+                          <td style=" width: 10%; height : 10%;" >{{i.author}}</td>
+                          <td style=" width: 10%; height : 10%;" >{{i.publisher}}</td>
+                          <td style=" width: 10%; height : 10%;">{{i.category}}</td>
+                          <td><img style=" width: 25%; height : 50%;" class="img" src="/media/{{ i.book_image }}" alt="Snow"></td>
+
+
+                          <td>
+
+
+                          </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+    </center>
+</body>
+</html>
+<!--</head>-->
+<!--<body>-->
+<!--{% for i in book %}-->
+<!--{{i.book_name}}-->
+<!--{{i.published_date}}-->
+<!--{{i.author}}-->
+<!--{{i.publisher}}-->
+<!--{{i.category}}-->
+<!--{{i.book_image}}-->
+
+
+
+<!--{% endfor %}-->
+
+<!--</body>-->
+<!--</html>-->
